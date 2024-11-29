@@ -14,9 +14,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 urlpatterns = [
     path("register/", RegisterUserView.as_view(), name="register-user"),
     path("login/", TokenObtainPairView.as_view(), name="login"),
-    path('token/refresh/', TokenRefreshView.as_view(), name="refresh-token"),
+    path('token/refresh/', TokenRefreshView.as_view(), name="refresh-token"), # Token refresh (if expired)
     path('logout/', LogoutView.as_view(), name="logout"),
     path("register_admin/", RegisterAdminView.as_view(), name="register-admin"),
+
+    # Protected routes (Require authentication and roles)
+    
     path("assign_role/<int:user_id>", AssignRoleView.as_view(), name="assign_role"),
     path('manage_resources/', ManageResources.as_view() , name="manage-resources"),
     path('my_resources/', MyResources.as_view(), name="my-resources"),

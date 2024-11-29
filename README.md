@@ -1,11 +1,9 @@
 # RBAC Implementation in Django with DRF
 
 ## Description
-
 This project implements Role-Based Access Control (RBAC) using Django and Django REST Framework (DRF). The application provides a robust system for user registration, role management, and access control across different API endpoints.
 
 ## Roles
-
 1. **Admin**: Full system control
    - Assign roles to users
    - View and edit all resources
@@ -25,24 +23,28 @@ This project implements Role-Based Access Control (RBAC) using Django and Django
 - Registers a new user with default `User` role
 
 ### Admin Registration
-- **URL**: `/api/register/admin/`
+- **URL**: `/api/register_admin/`
 - **Method**: `POST`
-- Restricted to existing Admins
 - Creates new admin users
 
 ### Role Assignment
-- **URL**: `/api/assign-role/{user_id}/`
+- **URL**: `/api/assign_role/{user_id}/`
 - **Method**: `PATCH`
 - Allows Admins to change user roles
+
+### Manage Resources
+- **URL**: `/api/manage_resources/`
+- **Method**: `GET`
+- Shows confirmation message of eligibility
 
 ### Resource Management
 - **View Resources**: `/api/my_resources/`
   - **Method**: `GET`
-  - Access based on permissions
+  - Shows confirmation message of eligibility
 
-- **Edit Resources**: `/api/my_resources/{id}/`
-  - **Method**: `PUT`
-  - Restricted to users with edit permissions
+- **Edit Resources**: `/api/edit_resources/`
+  - **Method**: `GET`
+  - Shows confirmation message of eligibility
 
 ## Setup and Installation
 
@@ -64,17 +66,23 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure database (MySQL example)
-# Update settings.py with your database credentials
-
-# Run migrations
+# Configure database
 python manage.py migrate
-
-# Create superuser
-python manage.py createsuperuser
 
 # Start development server
 python manage.py runserver
+```
+
+## Environment Configuration
+
+### Create .env File
+Create a `.env` file in the project root with the following content:
+```
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=3306
 ```
 
 ## Permissions Overview
@@ -87,11 +95,9 @@ python manage.py runserver
 2. Assign roles
 3. Test resource access based on roles
 
-## Database Configuration
-Supports MySQL. Update `DATABASES` in `settings.py` with your credentials.
+## Documentation References
+- [Django Official Documentation](https://docs.djangoproject.com/)
+- [Django REST Framework Documentation](https://www.django-rest-framework.org/)
 
-## License
-[Add your license information]
-
-## Contributing
-[Add contributing guidelines]
+## Acknowledgements
+Special thanks to the Django and Django REST Framework communities for their exceptional documentation and support.

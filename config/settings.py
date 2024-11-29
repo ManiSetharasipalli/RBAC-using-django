@@ -77,16 +77,17 @@ DATABASES = {
     }
 }
 
+# Django REST Framework settings
 REST_FRAMEWORK = {
-        'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Using JWT for authentication
     ),
-     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',  # Default to allow all users; you can change per view
     ),
 }
 
-
+# Simple JWT settings for access and refresh tokens
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     
