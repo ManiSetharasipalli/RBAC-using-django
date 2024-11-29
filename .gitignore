@@ -1,0 +1,23 @@
+# Python files
+*.pyc
+__pycache__/
+
+# Virtual environment
+.venv/
+env/
+
+# Environment variables
+.env
+
+# Static and media files
+/staticfiles/
+/media/
+
+# Database files
+*.sqlite3
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
